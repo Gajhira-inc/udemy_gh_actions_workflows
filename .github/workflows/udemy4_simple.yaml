@@ -1,0 +1,31 @@
+---
+name: Shell commands
+
+on: [push]
+
+jobs:
+   run-shell-command:
+      runs-on: ubuntu-latest
+      steps:
+          -  
+          - name: echo a string
+            run: echo "Hello world of Actions Workflows"
+          - name: multiline script
+            run: |
+               echo "this is a multirun Script step"
+               node -v
+               npm -v
+               which echo
+          - name: second shell Python
+            run: |
+               import platform
+               print (platform.processor())
+            shell: python
+   run-windows-commands:
+      runs-on: windows-latest
+      steps:
+          - name: Directory PowerShell
+            run: Get-Location
+          - name: Directory Bash
+            run: pwd
+            shell: bash
